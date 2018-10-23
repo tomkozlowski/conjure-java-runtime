@@ -16,6 +16,7 @@ dependencies {
     testCompile "org.hamcrest:hamcrest-all"
     testCompile "io.dropwizard:dropwizard-core"
     testCompile "io.dropwizard:dropwizard-testing"
+    testCompile "javax.activation:javax.activation-api"
     testCompile "junit:junit"
 
     annotationProcessor "org.immutables:value"

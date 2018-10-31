@@ -20,22 +20,23 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import javax.inject.Inject;
 import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;
 import javax.ws.rs.ext.Provider;
-import org.glassfish.hk2.api.ServiceLocator;
+import org.glassfish.jersey.internal.inject.InjectionManager;
 import org.glassfish.jersey.internal.inject.Providers;
 import org.glassfish.jersey.internal.util.ReflectionHelper;
 import org.glassfish.jersey.internal.util.collection.ClassTypePair;
 
 @Provider
 public final class Java8OptionalParamConverterProvider implements ParamConverterProvider {
-    private final ServiceLocator locator;
+    private final InjectionManager injectionManager;
 
     @Inject
-    public Java8OptionalParamConverterProvider(final ServiceLocator locator) {
-        this.locator = locator;
+    public Java8OptionalParamConverterProvider(final InjectionManager injectionManager) {
+        this.injectionManager = injectionManager;
     }
 
     @Override
@@ -59,7 +60,9 @@ public final class Java8OptionalParamConverterProvider implements ParamConverter
                 };
             }
 
-            for (ParamConverterProvider provider : Providers.getProviders(locator, ParamConverterProvider.class)) {
+            Set<ParamConverterProvider> providers = Providers.getProviders(
+                    injectionManager, ParamConverterProvider.class);
+            for (ParamConverterProvider provider : providers) {
                 final ParamConverter<?> converter = provider.getConverter(ctp.rawClass(), ctp.type(), annotations);
                 if (converter != null) {
                     return new ParamConverter<T>() {

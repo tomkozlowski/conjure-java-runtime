@@ -189,13 +189,13 @@
             ]
         },
         "io.dropwizard.metrics:metrics-core": {
-            "locked": "3.2.5",
+            "locked": "3.2.6",
             "transitive": [
                 "com.palantir.tritium:tritium-registry"
             ]
         },
         "javax.ws.rs:javax.ws.rs-api": {
-            "locked": "2.0.1",
+            "locked": "2.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors"
             ]
@@ -415,13 +415,13 @@
             ]
         },
         "io.dropwizard.metrics:metrics-core": {
-            "locked": "3.2.5",
+            "locked": "3.2.6",
             "transitive": [
                 "com.palantir.tritium:tritium-registry"
             ]
         },
         "javax.ws.rs:javax.ws.rs-api": {
-            "locked": "2.0.1",
+            "locked": "2.1",
             "transitive": [
                 "com.palantir.conjure.java.api:errors"
             ]
